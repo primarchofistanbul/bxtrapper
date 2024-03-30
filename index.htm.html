@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B/X Trapper</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .note {
+        font-size: 12px;
+        color: #666;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>D&D Trap Generator</h1>
+    <table>
+        <tr>
+            <th>Mechanism</th>
+            <td id="mechanism"></td>
+        </tr>
+        <tr>
+            <th>Trigger</th>
+            <td id="trigger"></td>
+        </tr>
+        <tr>
+            <th>Difficulty</th>
+            <td id="difficulty"></td>
+        </tr>
+        <tr>
+            <th>Clue</th>
+            <td id="clue"></td>
+        </tr>
+    </table>
+    <button onclick="generateTrap()">Generate Trap</button>
+</div>
+
+<script>
+    function generateTrap() {
+        const mechanisms = [
+            "Projectile – shoots projectiles such as arrows, darts or spears",
+            "Pit – opens a pit trap filled with spikes, toxic pond, burning tar, etc.",
+            "Spray/Flood – fills the chamber with sewage, water, acid, etc.",
+            "Vent – fills the chamber with a poisonous choking, blistering, blood, or nerve agent gas",
+            "Structural – floor collapse, ceiling collapse, cave-in",
+            "Magical - ethereal, electric, cold, fire, necrotic, psychic",
+            "Capturing – net, cage, etc.",
+            "Alarming – informs others"
+        ];
+        const triggers = [
+            "sound",
+            "light",
+            "contact (touching)",
+            "weight change (pressure)",
+            "switch, lever, etc., or enemy-operated",
+            "active magic (spellcasting)"
+        ];
+        const difficulties = [
+            "easy – 1",
+            "novice – 2",
+            "intermediate – 3",
+            "advanced – 4",
+            "expert – 5",
+            "extreme – 6"
+        ];
+        const clues = [
+            "visual (notice)",
+            "auditory (listen)",
+            "sensory (touch)",
+            "olfactory (smell)",
+            "perceptional (wisdom, intelligence)",
+            "ethereal (magic)"
+        ];
+
+        function rollDie(sides) {
+            return Math.floor(Math.random() * sides) + 1;
+        }
+
+        const mechanism = mechanisms[rollDie(8) - 1];
+        const trigger = triggers[rollDie(6) - 1];
+        const difficulty = difficulties[rollDie(6) - 1];
+        const clue = clues[rollDie(6) - 1];
+
+        document.getElementById("mechanism").innerHTML = `<span class="note">the consequence of it operating:</span><br>${mechanism}`;
+        document.getElementById("trigger").innerHTML = `<span class="note">how it can be initiated:</span><br>${trigger}`;
+        document.getElementById("difficulty").innerHTML = `<span class="note">the number of turns (10 min. each) required to disarm it:</span><br>${difficulty}`;
+        document.getElementById("clue").innerHTML = `<span class="note">the sign of the trap that characters can pick up on to be aware of it:</span><br>${clue}`;
+    }
+
+    // Generate initial trap on page load
+    generateTrap();
+</script>
+</body>
+</html>
