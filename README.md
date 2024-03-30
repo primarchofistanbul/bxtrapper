@@ -5,5 +5,5 @@ A simple trap generator for your dungeons. It rolls on four different valuables 
 1. Click on "Generate"
 
 ## How to install
-Download the bxtrapper.html and run it on your favourite browser. Or, just try it on [https://primarchofistanbul.github.io/bxtrapper/
+Download the bxtrapper.htm and run it on your favourite browser. Or, just try it on [https://primarchofistanbul.github.io/bxtrapper/
 ](https://primarchofistanbul.github.io/bxtrapper/)
